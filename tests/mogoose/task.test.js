@@ -14,7 +14,7 @@ const createUser = async () => {
 
   userGlobal = UserModel({
     name: 'Kevin',
-    email: `pepe${Math.floor(Math.random() * 1000)}@gmail.com`,
+    email: `kevin${Date.now()}@gmail.com`,
     password: '12345'
   })
   userGlobal = await saveUser(userGlobal)

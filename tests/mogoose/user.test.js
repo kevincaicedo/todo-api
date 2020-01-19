@@ -9,7 +9,7 @@ describe('crud operation repository user', () => {
   test('it should saved one user', async done => {
     let user = UserModel({
       name: 'Kevin',
-      email: `pepe${Math.floor(Math.random() * 1000)}@gmail.com`,
+      email: `kevin${Date.now()}@gmail.com`,
       password: '12345'
     })
     user = await saveUser(user)
@@ -19,7 +19,7 @@ describe('crud operation repository user', () => {
 
   test('it should not create one user without required fields', async done => {
     const user = UserModel({
-      email: `pepe${Math.floor(Math.random() * 1000)}@gmail.com`,
+      email: `kevin${Date.now()}@gmail.com`,
       password: '12345'
     })
     try {
@@ -35,7 +35,7 @@ describe('crud operation repository user', () => {
   test('it should saved one user', async done => {
     let user = UserModel({
       name: 'Kevin',
-      email: `pepe${Math.floor(Math.random() * 1000)}@gmail.com`,
+      email: `kevin${Date.now()}@gmail.com`,
       password: '12345'
     })
     user = await saveUser(user)
@@ -50,7 +50,7 @@ describe('crud operation repository user', () => {
   test('it should saved one user', async done => {
     let user = UserModel({
       name: 'Kevin',
-      email: `pepe${Math.floor(Math.random() * 1000)}@gmail.com`,
+      email: `kevin${Date.now()}@gmail.com`,
       password: '12345'
     })
     user = await saveUser(user)
