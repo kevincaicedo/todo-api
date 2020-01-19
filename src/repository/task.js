@@ -1,7 +1,9 @@
 import { TaskModel } from '../models/task'
 
 export const saveTask = async task => {
-  return await TaskModel.create(task)
+  /* eslint-disable-next-line */
+  const taskSaved = await TaskModel.create(task)
+  return taskSaved
 }
 
 export const deleteTask = async taskId => {
@@ -10,11 +12,14 @@ export const deleteTask = async taskId => {
 }
 
 export const updateTask = async (task, userId) => {
-  const taskUpdated = await TaskModel.findOneAndUpdate({ _id: task._id, user: userId }, task)
+  const taskUpdated = await TaskModel.findOneAndUpdate(
+    { _id: task._id, user: userId },
+    task
+  )
   return taskUpdated
 }
 
-export const findTasksByUser = async (userId) => {
+export const findTasksByUser = async userId => {
   const tasks = await TaskModel.find({ user: userId })
   return tasks
 }
