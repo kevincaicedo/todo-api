@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --coverage --runInBand --setupFiles dotenv/config",
+    "test": "jest --coverage --forceExit --detectOpenHandles --runInBand --setupFiles dotenv/config",
     "dev": "nodemon --exec babel-node src/index.js",
     "build": "babel src --out-dir dist",
     "lint": "standard",
