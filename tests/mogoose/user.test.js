@@ -2,7 +2,8 @@ import { UserModel } from '../../src/models/user'
 import {
   saveUser,
   findUserByEmailAndPassword,
-  findUserById
+  findUserById,
+  findUserByEmail
 } from '../../src/repository/user'
 
 describe('crud operation repository user', () => {
@@ -55,6 +56,18 @@ describe('crud operation repository user', () => {
     })
     user = await saveUser(user)
     const userFound = await findUserById(user._id)
+    expect(userFound.name).toEqual(user.name)
+    done()
+  })
+
+  test('it should saved one user', async done => {
+    let user = UserModel({
+      name: 'Kevin',
+      email: `kevin${Date.now()}@gmail.com`,
+      password: '12345'
+    })
+    user = await saveUser(user)
+    const userFound = await findUserByEmail(user.email)
     expect(userFound.name).toEqual(user.name)
     done()
   })

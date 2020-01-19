@@ -93,3 +93,5 @@ typings/
 .tern-port
 
 package-lock.json
+
+.vscode

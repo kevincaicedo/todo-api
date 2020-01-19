@@ -1,8 +1,9 @@
 'use strict'
 import { connect } from 'mongoose'
 import Chalk from 'chalk'
+import { DB_USER, DB_PASSWD, DB_HOST, DB_PORT } from '../config/env'
 
-const { DB_USER, DB_PASSWD, DB_HOST, DB_PORT } = process.env
+//const { DB_USER, DB_PASSWD, DB_HOST, DB_PORT } = process.env
 const mongoUrl = `mongodb://${DB_USER}:${DB_PASSWD}@${DB_HOST}:${DB_PORT}`
 
 export default async () => {

@@ -17,3 +17,10 @@ export const findUserByEmailAndPassword = async (email, password) => {
   }).exec()
   return userFound
 }
+
+export const findUserByEmail = async email => {
+  const userFound = await UserModel.findOne({
+    email
+  }).exec()
+  return userFound
+}
