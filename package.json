@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --coverage --runInBand --setupFiles dotenv/config",
+    "dev": "nodemon src/index.js --exec babel-node -e js",
+    "build": "babel src --out-dir dist",
+    "lint": "standard",
+    "link-fix": "standard --fix"
   },
   "author": "Kevin Caicedo",
   "license": "MIT",
@@ -18,20 +22,29 @@
   "standard": {
     "ignore": [
       "**/dist/",
-      "node_modules/**"
+      "node_modules/**",
+      "tests/**"
     ]
   },
   "jest": {
     "testEnvironment": "node",
     "coveragePathIgnorePatterns": [
       "/node_modules/"
-    ]
+    ],
+    "setupFilesAfterEnv": [
+      "./tests/setup.js"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.js"
+    ],
+    "coverageDirectory": "coverage"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.3",
     "@babel/core": "^7.8.3",
     "@babel/plugin-transform-runtime": "^7.8.3",
     "@babel/preset-env": "^7.8.3",
+    "babel-jest": "^24.9.0",
     "jest": "^24.9.0",
     "nodemon": "^2.0.2",
     "standard": "^14.3.1",
