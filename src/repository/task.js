@@ -11,6 +11,14 @@ export const deleteTask = async taskId => {
   return taskRemoved
 }
 
+export const deleteTaskByUser = async (taskId, userId) => {
+  const taskRemoved = await TaskModel.findOneAndDelete({
+    _id: taskId,
+    user: userId
+  })
+  return taskRemoved
+}
+
 export const updateTask = async (task, userId) => {
   const taskUpdated = await TaskModel.findOneAndUpdate(
     { _id: task._id, user: userId },
