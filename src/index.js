@@ -4,10 +4,14 @@ import http from 'http'
 import cors from 'cors'
 import chalk from 'chalk'
 import express from 'express'
+import auth from 'express-jwt'
 import bodyParser from 'body-parser'
 import logger from 'morgan'
+import fs from 'fs'
+import path from 'path'
 
 import routeUser from './api/routes/user'
+import routeTask from './api/routes/task'
 
 const port = process.env.PORT || 8000
 
@@ -16,6 +20,10 @@ mongooseLoader()
 
 const app = express()
 const server = http.createServer(app)
+const secret = fs.readFileSync(
+  path.join(__dirname, './credentials/private.key'),
+  'utf8'
+)
 
 app.use(logger('combined'))
 app.use(bodyParser.json())
@@ -27,6 +35,7 @@ app.use(
 app.use(cors())
 
 app.use('/api/user', routeUser)
+app.use('/api/tasks', auth({ secret }), routeTask)
 
 // Express Error Handler
 app.use((err, req, res, next) => {
